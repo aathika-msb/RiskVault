@@ -2,7 +2,8 @@ import { setAssessmentData } from "../actions/assessment";
 import { getActionType } from "../helperFunctions";
 
 const initialState = {
-assessmentData:'hai hello assessment data',
+  assessmentData: [
+  ]
 };
 
 const assessmentDataReducer = (state = initialState, action) => {

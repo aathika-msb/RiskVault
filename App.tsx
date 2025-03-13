@@ -3,44 +3,26 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Provider, useDispatch, useSelector } from "react-redux";
 import store from "./redux/store";
 import { setAssessmentData } from "./redux/actions/assessment";
-function App() {
-  const { assessmentData } = useSelector((state) => ({
-    assessmentData: state.assessmentData.assessmentData,
-  }));
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import HomeScreen from "./screens/homeScreen/homeScreen";
+import QuestionsScreen from "./screens/questionsScreen/questionsScreen";
+import ScoreDisplayScreen from "./screens/scoreDisplayScreen/scoreDisplayScreen";
 
-  const dispatch = useDispatch();
+const Stack = createStackNavigator();
 
+export function storeApp() {
   return (
     <Provider store={store}>
-      <View style={styles.container}>
-        <Text>Open up App.tsx to start working on your app!</Text>
-        <Text>{`${assessmentData}`}</Text>
-        <TouchableOpacity
-          onPress={() => {
-            dispatch(setAssessmentData("Hello World"));
-          }
-          }
-        >
-          <Text>Dispatch Action</Text>
-        </TouchableOpacity>
-        <StatusBar style="auto" />
-      </View>
-    </Provider>
-  );
-}
-export default function storeApp() {
-  return (
-    <Provider store={store}>
-      <App />
+     <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Questions" component={QuestionsScreen} />
+        <Stack.Screen name="ScoreDisplay" component={ScoreDisplayScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
     </Provider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
+export default storeApp;
