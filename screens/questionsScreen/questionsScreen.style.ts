@@ -1,30 +1,47 @@
 import { StyleSheet } from 'react-native';
+import Colors from '../../theme/color';
+import Sizes from '../../theme/size';
 
 const questionsScreenStyle = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#f5f5f5', // Light gray background
+    backgroundColor: Colors.backgroundDark,
   },
-  text: {
-    fontSize: 24,
+  title: {
+    fontSize: Sizes.title,
     fontWeight: 'bold',
-    color: '#333', // Dark gray text
+    color: Colors.textPrimary,
+    marginBottom: Sizes.smallMargin,
+  },
+  questionContainer: {
+    marginBottom: Sizes.regularMargin,
+  },
+  questionText: {
+    fontSize: Sizes.regularText,
+    color: Colors.textSecondary,
+    fontWeight: 'semibold',
   },
   dropDownMainContainer: {
-    padding: 16,
+    padding: Sizes.smallPadding,
   },
   dropdown: {
-    borderColor: 'gray',
-    borderWidth: 1,
-    borderRadius: 5,
-    backgroundColor: 'white',
+    borderColor: Colors.inputBorder,
+    borderWidth: 1.5,
+    borderRadius: Sizes.smallRadius,
+    backgroundColor: Colors.backgroundLight,
   },
   dropdownContainer: {
-    borderColor: 'gray',
-    backgroundColor: 'white',
+    borderColor: Colors.inputBorder,
+    backgroundColor: Colors.backgroundLight,
   },
+  dropdownText: {
+    fontSize: Sizes.regularText,
+    color: Colors.textPrimary,
+  },
+  buttonContainerStyle: {
+    marginVertical: Sizes.largeMargin,
+  }
 });
 
 export default questionsScreenStyle;

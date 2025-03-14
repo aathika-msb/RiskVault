@@ -1,22 +1,30 @@
 import React from "react";
-import { View, Text, Touchable, TouchableOpacity } from "react-native";
+import { Text, Image } from "react-native";
 import AppButton from "../../components/appButton/appButton";
 import AppContainer from "../../components/appContainer/appContainer";
+import { TNavigation } from "../../Constants/TypesConstants";
+import homeScreenStyles from "./homeScreen.style";
+interface THomeScreenProps {
+  navigation: TNavigation;
+}
 
-const HomeScreen = (props) => {
+const HomeScreen = (props: THomeScreenProps): JSX.Element => {
   const { navigation } = props;
   return (
-    <AppContainer>
-      <Text style={{ fontSize: 20, fontWeight: "bold" }}>
-        Hello, this is MyScreen!
+    <AppContainer style={homeScreenStyles.container}>
+      <Image
+        style={homeScreenStyles.mainImage}
+        source={require("../../assets/favicon.png")}
+      />
+      <Text style={homeScreenStyles.title}>
+        Welcome to Risk Vault!
+      </Text>
+      <Text style={homeScreenStyles.subTitle}>
+        Get started with the questions to know your risk score.
       </Text>
       <AppButton
-        title="Go to Questions"
+        title="Begin Questionaire"
         onPress={() => navigation.navigate("Questions")}
-      />
-      <AppButton
-        title="Go to ScoreDisplay"
-        onPress={() => navigation.navigate("ScoreDisplay")}
       />
     </AppContainer>
   );

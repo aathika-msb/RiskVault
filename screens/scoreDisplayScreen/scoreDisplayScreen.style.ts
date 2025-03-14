@@ -1,16 +1,17 @@
 import { StyleSheet } from 'react-native';
+import Colors from '../../theme/color';
 
 const scoreDisplayScreenStyles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#f5f5f5', // Light gray background
+    backgroundColor: Colors.backgroundDark,
   },
   text: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#333', // Dark gray text
+    color: Colors.textSecondary,
   },
 });
 

@@ -1,20 +1,23 @@
 import { StyleSheet } from 'react-native';
+import Sizes from '../../theme/size';
+import Colors from '../../theme/color';
+import { font } from '../../theme/font';
 
 const appButtonStyles = StyleSheet.create({
   buttonContainer: {
-    borderRadius: 10,
+    borderRadius: Sizes.smallRadius,
     overflow: 'hidden',
+    width: '100%',
   },
   button: {
-    backgroundColor: '#007bff', // Blue button
-    paddingVertical: 12,
-    paddingHorizontal: 20,
-    
+    backgroundColor: Colors.buttonPrimary, 
+    paddingVertical: Sizes.smallPadding,
     alignItems: 'center',
   },
   buttonText: {
-    color: '#fff',
-    fontSize: 18,
+    color: Colors.buttonText,
+    fontSize: Sizes.mediumText,
+    fontFamily: font.fontFamily.regular,
     fontWeight: 'bold',
   },
 });
