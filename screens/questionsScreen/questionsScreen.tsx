@@ -1,9 +1,8 @@
 // back handle
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { View, Text } from "react-native";
 import AppContainer from "../../components/appContainer/appContainer";
 import AppButton from "../../components/appButton/appButton";
-import styles from "./questionsScreen.style";
 import { useDispatch, useSelector } from "react-redux";
 import {
   resetAssessmentData,
@@ -11,7 +10,7 @@ import {
   setAssessmentData,
   setFinalScore,
 } from "../../redux/actions/assessment";
-import { questions } from "../../Constants/ConstantValue";
+import { questions, TQuestions } from "../../Constants/ConstantValue";
 import { TNavigation } from "../../Constants/TypesConstants";
 import questionsScreenStyle from "./questionsScreen.style";
 import Dropdown from "../../components/dropDownPicker/dropDownPicker";
@@ -22,17 +21,8 @@ interface TQuestionProps {
   navigation: TNavigation;
 }
 
-interface TQuestions {
-  id: number;
-  question: string;
-  options: Array<{ label: string; value: number }>;
-}
-
 const QuestionsScreen = (props: TQuestionProps) => {
   const { navigation } = props;
-  const [totalScore, setTotalScore] = useState<number>(0);
-  const [minScore, setMinScore] = useState<number>(0);
-  const [maxScore, setMaxScore] = useState<number>(0);
   const { assessmentData } = useSelector(
     (state: RootStateTypes) => state.assessmentData
   );
@@ -40,27 +30,14 @@ const QuestionsScreen = (props: TQuestionProps) => {
 
   const allAnswered = questions.every((q) => assessmentData[q.id]);
 
-  const calMinMaxScore = (): void => {
-    let min: number = 0;
-    let max: number = 0;
-    questions.forEach((question) => {
-      min += question.options[0].value;
-      max += question.options[question.options.length - 1].value;
-    });
-    setMinScore(min);
-    setMaxScore(max);
-  };
-
-  useEffect(() => {
-    calMinMaxScore();
-  }, []);
-
-  const calculateCivilScore = (): number => {
-    // Calculate percentage
-    const civilScorePercentage =
-      ((totalScore - minScore) / (maxScore - minScore)) * 100;
-
-    return Math.round(civilScorePercentage);
+  const getNormalizedScore = (
+    options: TQuestions["options"],
+    selectedValue: number
+  ): number => {
+    const minScore = options[0].value;
+    const maxScore = options[options.length - 1].value;
+    const normalizedScore = (selectedValue - minScore) / (maxScore - minScore);
+    return normalizedScore;
   };
 
   const getSelectedLabel = (
@@ -77,14 +54,34 @@ const QuestionsScreen = (props: TQuestionProps) => {
     selectedValue: number
   ): void => {
     const label = getSelectedLabel(options, selectedValue);
+    const normalizedScore = getNormalizedScore(options, selectedValue);
     dispatch(
       setAssessmentData({
         questionId,
         answer: label,
         value: selectedValue,
+        normalizedScore,
       })
     );
-    setTotalScore((prev) => prev + selectedValue);
+  };
+
+  const calCulateFinalScore = (): number => {
+    return Object.values(assessmentData)
+    .reduce((sum, entry) => sum + entry.normalizedScore, 0);
+  }
+
+  const onSubmit = (): void => {
+    const totalScore = calCulateFinalScore();
+    const scorePercentage = (totalScore / questions.length) * 100;
+
+    dispatch(setFinalScore(scorePercentage));
+    navigation.navigate("ScoreDisplay");
+  };
+
+  const handleBackPress = (): void => {
+    dispatch(resetAssessmentData());
+    dispatch(resetFinalScore());
+    navigation.goBack();
   };
 
   const RenderQuestions = (
@@ -98,7 +95,6 @@ const QuestionsScreen = (props: TQuestionProps) => {
           {`${index + 1}.`}
           {question}
         </Text>
-
         <Dropdown
           questionId={id}
           options={options}
@@ -108,18 +104,7 @@ const QuestionsScreen = (props: TQuestionProps) => {
       </View>
     );
   };
-  const onSubmit = (): void => {
-    const scorePercentage = calculateCivilScore();
-    //dispatch(setAssessmentData(selectedValue));
-    dispatch(setFinalScore(scorePercentage));
-    navigation.navigate("ScoreDisplay");
-  };
 
-  const handleBackPress = (): void => {
-    dispatch(resetAssessmentData());
-    dispatch(resetFinalScore());
-    navigation.goBack();
-  };
   return (
     <AppContainer
       style={questionsScreenStyle.container}

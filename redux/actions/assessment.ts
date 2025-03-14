@@ -5,6 +5,7 @@ interface TAssessmentData {
     questionId: number,
     answer: string,
     value: number,
+    normalizedScore: number,
 }
 
 export const fetchAssessmentData = () => (action(FETCH_ASSESSMENT_DATA));

@@ -12,6 +12,7 @@ export interface TAssessmentData {
     [questionId: string]: {
       answer: string;
       value: number;
+      normalizedScore: number;
     };
   };
   finalScore: number;
@@ -25,12 +26,13 @@ const initialState = {
 const assessmentDataReducer = (state:TAssessmentData = initialState, action:TAction) => {
   switch (action.type) {
     case getActionType(setAssessmentData):
-      const { questionId, answer, value } = action.payload;
+      const { questionId, answer, value, normalizedScore } = action.payload;
       // Store answer in a key-value format
       let assessmentData = state.assessmentData;
       assessmentData[questionId] = {
         answer,
         value,
+        normalizedScore,
       };
       return { ...state, ...assessmentData };
     case getActionType(setFinalScore):
