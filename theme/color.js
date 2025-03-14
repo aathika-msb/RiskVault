@@ -16,9 +16,9 @@ const Colors = {
   textHighlight: "#1B74E4", // Vibrant blue for highlighted text
 
   // **Improved Button Colors**
-  buttonPrimary: "#1B74E4", // Vibrant blue for primary buttons
-  buttonSecondary: "#3A7CA5", // Slightly muted blue for secondary buttons
-  buttonDisabled: "#B0C4DE", // Soft blue-gray for disabled buttons
+  buttonPrimary: "#2A6CBF", // Softer blue for primary buttons
+  buttonSecondary: "#35789E", // Muted blue for secondary buttons
+  buttonDisabled: "#A0B3C4", // Subtle blue-gray for disabled buttons
   buttonText: "#FFFFFF", // White text for clarity
 
   // Border Colors
