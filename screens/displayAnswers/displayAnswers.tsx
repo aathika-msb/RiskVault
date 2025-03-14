@@ -35,7 +35,7 @@ const DisplayAnswerScreen = (): JSX.Element => {
   };
   return (
     <AppContainer style={displayAnswersStyle.container}>
-      <Text style={displayAnswersStyle.title}>Display Answer Screen</Text>
+      <Text style={displayAnswersStyle.title}>Review Your Responses</Text>
       {questions.map((question, index) => {
         return renderQuestion(question, index);
       })}

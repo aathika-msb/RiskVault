@@ -18,7 +18,7 @@ const HomeScreen = (props: THomeScreenProps): JSX.Element => {
       />
       <Text style={homeScreenStyles.title}>Welcome to Risk Vault!</Text>
       <Text style={homeScreenStyles.subTitle}>
-        Get started with the questions to know your risk score.
+      Start the questionnaire to assess your risk score.
       </Text>
       <AppButton
         title="Begin Questionaire"

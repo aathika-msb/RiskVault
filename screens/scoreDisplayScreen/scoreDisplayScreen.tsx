@@ -24,14 +24,14 @@ const ScoreDisplayScreen = (props: TScoreDisplayScreenProps): JSX.Element => {
   return (
     <AppContainer style={scoreDisplayScreenStyles.container}>
       <Text style={scoreDisplayScreenStyles.text}>
-        Here is your assessment result
+      Your Risk Assessment Result
       </Text>
       <ScoreIndicator score={finalScore} />
       <Text
         style={scoreDisplayScreenStyles.linkText}
         onPress={() => navigation.navigate("DisplayAnswer")}
       >
-        View your answers
+        View Your Responses
       </Text>
       <AppButton
         title="Retake Assessment"

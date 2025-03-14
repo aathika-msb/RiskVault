@@ -110,7 +110,7 @@ const QuestionsScreen = (props: TQuestionProps) => {
       style={questionsScreenStyle.container}
       backPress={handleBackPress}
     >
-      <Text style={questionsScreenStyle.title}>Answer the below questions</Text>
+      <Text style={questionsScreenStyle.title}>Answer the following questions to evaluate your risk level.</Text>
       {questions.map(
         (question: TQuestions, index: number): JSX.Element =>
           RenderQuestions(question, index)
