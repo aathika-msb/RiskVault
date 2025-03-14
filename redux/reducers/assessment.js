@@ -1,4 +1,9 @@
-import { resetAssessmentData, resetFinalScore, setAssessmentData, setFinalScore } from "../actions/assessment";
+import {
+  resetAssessmentData,
+  resetFinalScore,
+  setAssessmentData,
+  setFinalScore,
+} from "../actions/assessment";
 import { getActionType } from "../helperFunctions";
 
 const initialState = {
@@ -19,10 +24,10 @@ const assessmentDataReducer = (state = initialState, action) => {
       return { ...state, ...assessmentData };
     case getActionType(setFinalScore):
       return { ...state, finalScore: action.payload };
-      case getActionType(resetAssessmentData):
-      return { ...state, ...initialState.assessmentData };
-      case getActionType(resetFinalScore):
-        return { ...state, ...initialState.finalScore };
+    case getActionType(resetAssessmentData):
+      return { ...state, assessmentData: {} };
+    case getActionType(resetFinalScore):
+      return { ...state, finalScore: 0 };
     default:
       return state;
   }

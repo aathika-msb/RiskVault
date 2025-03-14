@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { View, Text } from "react-native";
 import AppContainer from "../../components/appContainer/appContainer";
 import AppButton from "../../components/appButton/appButton";
-import DropDownPicker from "react-native-dropdown-picker";
 import styles from "./questionsScreen.style";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -15,6 +14,7 @@ import {
 import { questions } from "../../Constants/ConstantValue";
 import { TNavigation } from "../../Constants/TypesConstants";
 import questionsScreenStyle from "./questionsScreen.style";
+import Dropdown from "../../components/dropDownPicker/dropDownPicker";
 
 interface TQuestionProps {
   navigation: TNavigation;
@@ -50,6 +50,7 @@ const QuestionsScreen = (props: TQuestionProps) => {
   useEffect(() => {
     calMinMaxScore();
   }, []);
+
   const calculateCivilScore = (): number => {
     // Calculate percentage
     const civilScorePercentage =
@@ -58,58 +59,48 @@ const QuestionsScreen = (props: TQuestionProps) => {
     return Math.round(civilScorePercentage);
   };
 
-  const Dropdown = (eachQuestion: TQuestions, index: number): JSX.Element => {
-    const [open, setOpen] = useState<boolean>(false);
-    const [value, setValue] = useState<number | null>(null);
-    const { id, options } = eachQuestion;
+  const getSelectedLabel = (
+    options: TQuestions["options"],
+    value: number
+  ): string => {
+    const selectedItem = options.find((item) => item.value === value);
+    return selectedItem ? selectedItem.label : "None";
+  };
 
-    const getSelectedLabel = () => {
-      const selectedItem = options.find((item) => item.value === value);
-      return selectedItem ? selectedItem.label : "None";
-    };
-
-    return (
-      <View style={{ ...styles.dropDownMainContainer, zIndex: open ? 2 : 1 }}>
-        <DropDownPicker
-          open={open}
-          value={value}
-          items={options}
-          setOpen={setOpen}
-          setValue={setValue}
-          placeholder="Select an option"
-          style={styles.dropdown}
-          dropDownContainerStyle={styles.dropdownContainer}
-          textStyle={styles.dropdownText}
-          onChangeValue={(selectedItem) => {
-            const label = getSelectedLabel();
-            dispatch(
-              setAssessmentData({
-                questionId: id,
-                answer: label,
-                value: selectedItem,
-              })
-            );
-            setTotalScore((prev) => prev + selectedItem);
-          }}
-          zIndex={3000 - index * 1000} // Ensure dropdowns are properly stacked
-          zIndexInverse={1000 + index * 1000}
-        />
-      </View>
+  const handleDropDownChange = (
+    options: TQuestions["options"],
+    questionId: number,
+    selectedValue: number
+  ): void => {
+    const label = getSelectedLabel(options, selectedValue);
+    dispatch(
+      setAssessmentData({
+        questionId,
+        answer: label,
+        value: selectedValue,
+      })
     );
+    setTotalScore((prev) => prev + selectedValue);
   };
 
   const RenderQuestions = (
     questionDetails: TQuestions,
     index: number
   ): JSX.Element => {
-    const { question } = questionDetails;
+    const { question, id, options } = questionDetails;
     return (
       <View style={questionsScreenStyle.questionContainer} key={index}>
         <Text style={questionsScreenStyle.questionText}>
           {`${index + 1}.`}
           {question}
         </Text>
-        {Dropdown(questionDetails, index)}
+
+        <Dropdown
+          questionId={id}
+          options={options}
+          index={index}
+          onChangeValue={handleDropDownChange}
+        />
       </View>
     );
   };
@@ -126,7 +117,10 @@ const QuestionsScreen = (props: TQuestionProps) => {
     navigation.goBack();
   };
   return (
-    <AppContainer style={questionsScreenStyle.container} backPress={handleBackPress}>
+    <AppContainer
+      style={questionsScreenStyle.container}
+      backPress={handleBackPress}
+    >
       <Text style={questionsScreenStyle.title}>Answer the below questions</Text>
       {questions.map(
         (question: TQuestions, index: number): JSX.Element =>

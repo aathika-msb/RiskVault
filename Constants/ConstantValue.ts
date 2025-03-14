@@ -1,3 +1,12 @@
+export interface TQuestions {
+    id: number;
+    question: string;
+    options: TOptions[];
+}
+export interface TOptions {
+    label: string;
+    value: number;
+}
 export const questions = [
     {
         id: 1,
@@ -5,15 +14,15 @@ export const questions = [
         options: [
             {
                 label: "Safety and stability",
-                value: 30,
+                value: 1,
             },
             {
                 label: "Moderate growth",
-                value: 40,
+                value: 2,
             },
             {
                 label: "High growth",
-                value: 30,
+                value: 3,
             }
         ],
     },
@@ -23,15 +32,15 @@ export const questions = [
         options: [
             {
                 label: "I don't want any risk",
-                value: 10,
+                value: 1,
             },
             {
                 label: "I can take minimal risk",
-                value: 30,
+                value: 2,
             },
             {
                 label: "I love risk",
-                value: 60,
+                value: 3,
             }
         ],
     },
@@ -41,23 +50,23 @@ export const questions = [
         options: [
             {
                 label: "I would sell everything to avoid further loss.",
-                value: 20,
+                value: 1,
             },
             {
                 label: "I would be very concerned but wait a bit before deciding.",
-                value: 30,
+                value: 2,
             },
             {
                 label: " I would hold my investment for the long term.",
-                value: 50,
+                value: 3,
             },
             {
                 label: " I would consider investing more if I believe in the strategy.",
-                value: 50,
+                value: 4,
             },
             {
                 label: "I would see it as an opportunity and invest aggressively.",
-                value: 50,
+                value: 5,
             }
         ],
     },
@@ -67,23 +76,23 @@ export const questions = [
         options: [
             {
                 label: "No experience",
-                value: 20,
+                value: 1,
             },
             {
                 label: "Minimal ",
-                value: 30,
+                value: 2,
             },
             {
                 label: "Moderate",
-                value: 50,
+                value: 3,
             },
             {
                 label: "High",
-                value: 50,
+                value: 4,
             },
             {
                 label: "Expert",
-                value: 50,
+                value: 5,
             }
 
         ],
@@ -94,23 +103,23 @@ export const questions = [
         options: [
             {
                 label: "Less than 6 months",
-                value: 20,
+                value: 1,
             },
             {
                 label: "6 months to 1 year ",
-                value: 30,
+                value: 2,
             },
             {
                 label: "1 to 5 years",
-                value: 50,
+                value: 3,
             },
             {
                 label: "5 to 10 years",
-                value: 50,
+                value: 4,
             },
             {
                 label: "More than 10 years",
-                value: 50,
+                value: 5,
             }
         ],
     },

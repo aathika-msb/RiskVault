@@ -1,8 +1,16 @@
-import { View, Text, StyleSheet, Animated } from "react-native";
+import { StyleSheet, TextStyle, ViewStyle } from "react-native";
 import Sizes from "../../theme/size";
 import Colors from "../../theme/color";
 
-export const scoreIndicatorStyles = StyleSheet.create({
+interface TScoreIndicatorStyles {
+    container: ViewStyle;
+    label: TextStyle;
+    barContainer: ViewStyle;
+    bar: ViewStyle;
+    level: TextStyle;
+}
+
+export const scoreIndicatorStyles = StyleSheet.create<TScoreIndicatorStyles>({
     container: {
         alignItems: "center",
         marginTop: Sizes.largeMargin,

@@ -16,9 +16,7 @@ const HomeScreen = (props: THomeScreenProps): JSX.Element => {
         style={homeScreenStyles.mainImage}
         source={require("../../assets/favicon.png")}
       />
-      <Text style={homeScreenStyles.title}>
-        Welcome to Risk Vault!
-      </Text>
+      <Text style={homeScreenStyles.title}>Welcome to Risk Vault!</Text>
       <Text style={homeScreenStyles.subTitle}>
         Get started with the questions to know your risk score.
       </Text>

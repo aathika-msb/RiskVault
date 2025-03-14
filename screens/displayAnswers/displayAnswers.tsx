@@ -12,7 +12,7 @@ interface TQuestions {
 }
 const DisplayAnswerScreen = (): JSX.Element => {
   const { assessmentData } = useSelector((state) => state.assessmentData);
-  
+
   const renderQuestion = (question: TQuestions, index: number): JSX.Element => {
     return (
       <View key={index} style={displayAnswersStyle.questionContainer}>

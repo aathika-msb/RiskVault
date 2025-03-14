@@ -1,8 +1,16 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 import Colors from '../../theme/color';
 import Sizes from '../../theme/size';
 
-const displayAnswersStyle = StyleSheet.create({
+interface TDisplayAnswersStyle {
+    container: ViewStyle;
+    title: TextStyle;
+    questionContainer: ViewStyle;
+    questionText: TextStyle;
+    answerText: TextStyle;
+}
+
+const displayAnswersStyle = StyleSheet.create<TDisplayAnswersStyle>({
     container: {
         flex: 1,
         alignItems: 'center',

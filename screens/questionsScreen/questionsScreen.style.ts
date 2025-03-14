@@ -1,8 +1,16 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 import Colors from '../../theme/color';
 import Sizes from '../../theme/size';
 
-const questionsScreenStyle = StyleSheet.create({
+interface TQuestionsScreenStyle {
+  container: ViewStyle;
+  title: TextStyle;
+  questionContainer: ViewStyle;
+  questionText: TextStyle;
+  buttonContainerStyle: ViewStyle;
+}
+
+const questionsScreenStyle = StyleSheet.create<TQuestionsScreenStyle>({
   container: {
     flex: 1,
     alignItems: 'center',
@@ -21,23 +29,6 @@ const questionsScreenStyle = StyleSheet.create({
     fontSize: Sizes.regularText,
     color: Colors.textSecondary,
     fontWeight: 'semibold',
-  },
-  dropDownMainContainer: {
-    padding: Sizes.smallPadding,
-  },
-  dropdown: {
-    borderColor: Colors.inputBorder,
-    borderWidth: 1.5,
-    borderRadius: Sizes.smallRadius,
-    backgroundColor: Colors.backgroundLight,
-  },
-  dropdownContainer: {
-    borderColor: Colors.inputBorder,
-    backgroundColor: Colors.backgroundLight,
-  },
-  dropdownText: {
-    fontSize: Sizes.regularText,
-    color: Colors.textPrimary,
   },
   buttonContainerStyle: {
     marginVertical: Sizes.largeMargin,

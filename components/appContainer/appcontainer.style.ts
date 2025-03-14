@@ -1,8 +1,13 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View, ViewStyle } from 'react-native';
 import Sizes from '../../theme/size';
 import Colors from '../../theme/color';
 
-const appContainerStyles = StyleSheet.create({
+interface TAppContainerStyles {
+  mainContainer: ViewStyle;
+  container: ViewStyle;
+}
+
+const appContainerStyles = StyleSheet.create<TAppContainerStyles>({
   mainContainer: {
     flex: 1,
     backgroundColor: Colors.backgroundLight,
