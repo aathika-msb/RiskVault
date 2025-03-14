@@ -11,7 +11,7 @@ interface THomeScreenProps {
 const HomeScreen = (props: THomeScreenProps): JSX.Element => {
   const { navigation } = props;
   return (
-    <AppContainer style={homeScreenStyles.container}>
+    <AppContainer style={homeScreenStyles.container} showHeader={false}>
       <Image
         style={homeScreenStyles.mainImage}
         source={require("../../assets/favicon.png")}

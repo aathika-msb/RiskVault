@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import Colors from '../../theme/color';
+import Sizes from '../../theme/size';
 
 const scoreDisplayScreenStyles = StyleSheet.create({
   container: {
@@ -9,10 +10,18 @@ const scoreDisplayScreenStyles = StyleSheet.create({
     backgroundColor: Colors.backgroundDark,
   },
   text: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: Colors.textSecondary,
+    fontSize: Sizes.largeText,
+    fontWeight: '600',
+    color: Colors.textPrimary,
   },
+  linkText: {
+    fontSize:  Sizes.regularText,
+    fontWeight: '600',
+    color: Colors.textHighlight,
+    textDecorationLine: 'underline',
+    marginTop: Sizes.regularMargin,
+    marginBottom: Sizes.largeMargin,
+  }
 });
 
 export default scoreDisplayScreenStyles;

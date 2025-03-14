@@ -1,5 +1,6 @@
 export const questions = [
     {
+        id: 1,
         question: "What is your primary goal for this bank account?",
         options: [
             {
@@ -17,6 +18,7 @@ export const questions = [
         ],
     },
     {
+        id: 2,
         question: "How do you feel about investment risk?",
         options: [
             {
@@ -34,6 +36,7 @@ export const questions = [
         ],
     },
     {
+        id: 3,
         question: "How would you react if your investment lost 10% in a month?",
         options: [
             {
@@ -59,6 +62,7 @@ export const questions = [
         ],
     },
     {
+        id: 4,
         question: "How would you react if your investment lost 10% in a month?",
         options: [
             {
@@ -85,6 +89,7 @@ export const questions = [
         ],
     },
     {
+        id: 5,
         question: "How long do you plan to keep your money in this account?",
         options: [
             {
