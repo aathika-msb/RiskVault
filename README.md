@@ -27,11 +27,11 @@ Ensure you have the following installed on your machine:
 ### Steps
 1. Clone the repository:
    ```sh
-   git clone https://github.com/yourusername/riskvault.git
+   git clone https://github.com/aathika-msb/RiskVault.git
    ```
 2. Navigate to the project directory:
    ```sh
-   cd riskvault
+   cd RiskVault
    ```
 3. Install dependencies:
    ```sh
@@ -50,7 +50,7 @@ npm test
 ```
 
 ## Demo
-[Watch the demo video](#) 
+[Watch the demo video]() 
 
 For any questions or contributions, feel free to raise an issue or submit a pull request!
 
