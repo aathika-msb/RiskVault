@@ -25,7 +25,6 @@ const homeScreenStyles = StyleSheet.create<IHomeScreenStyles>({
     borderRadius: Sizes.mediumRadius
   },
   title: {
-    fontFamily: font.fontFamily.bold,
     fontSize: moderateScale(Sizes.largeText),
     color: Colors.textPrimary,
     textAlign: 'center',
@@ -33,7 +32,6 @@ const homeScreenStyles = StyleSheet.create<IHomeScreenStyles>({
     fontWeight: 'bold',
   },
   subTitle: {
-    fontFamily: font.fontFamily.medium,
     fontSize: moderateScale(Sizes.mediumText),
     color: Colors.textSecondary,
     paddingBottom: Sizes.mediumPadding,

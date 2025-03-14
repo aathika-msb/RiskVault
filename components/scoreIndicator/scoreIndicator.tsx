@@ -41,7 +41,7 @@ const ScoreIndicator = ({ score }: TScoreIndicatorProps): JSX.Element => {
     <View style={scoreIndicatorStyles.container}>
       <Text style={scoreIndicatorStyles.label}>Score: {score}</Text>
       <View style={scoreIndicatorStyles.barContainer}>
-        <Animated.View style={[scoreIndicatorStyles.bar, animatedStyle]} />
+        <Animated.View testID="animated-bar" style={[scoreIndicatorStyles.bar, animatedStyle]} />
       </View>
       <Text style={scoreIndicatorStyles.level}>
         {score < 40 ? "Low" : score < 70 ? "Medium" : "High"}

@@ -17,6 +17,7 @@ const Header = ({ title, backPress }: THeaderProps): JSX.Element => {
     <View style={headerStyles.header}>
       <TouchableOpacity
         onPress={() => (backPress ? backPress() : navigation.goBack())}
+        testID="back-button"
       >
         <Ionicons
           name="arrow-back"

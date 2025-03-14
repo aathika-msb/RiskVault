@@ -17,7 +17,6 @@ const appButtonStyles = StyleSheet.create({
   buttonText: {
     color: Colors.buttonText,
     fontSize: Sizes.mediumText,
-    fontFamily: font.fontFamily.regular,
     fontWeight: 'bold',
   },
 });
