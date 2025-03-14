@@ -9,6 +9,7 @@ const appButtonStyles = StyleSheet.create({
     backgroundColor: '#007bff', // Blue button
     paddingVertical: 12,
     paddingHorizontal: 20,
+    
     alignItems: 'center',
   },
   buttonText: {
