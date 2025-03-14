@@ -10,3 +10,6 @@ const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
 sagaMiddleware.run(combinedSagas);
 
 export default store;
+
+export type AppDispatch = typeof store.dispatch;
+

@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { questions } from "../../Constants/ConstantValue";
 import AppContainer from "../../components/appContainer/appContainer";
 import displayAnswersStyle from "./displayAnswers.style";
+import { RootStateTypes } from "../../redux/types/RootStateTypes";
 
 interface TQuestions {
   id: number;
@@ -11,7 +12,9 @@ interface TQuestions {
   options: Array<{ label: string; value: number }>;
 }
 const DisplayAnswerScreen = (): JSX.Element => {
-  const { assessmentData } = useSelector((state) => state.assessmentData);
+  const { assessmentData } = useSelector(
+    (state: RootStateTypes) => state.assessmentData
+  );
 
   const renderQuestion = (question: TQuestions, index: number): JSX.Element => {
     return (

@@ -15,6 +15,8 @@ import { questions } from "../../Constants/ConstantValue";
 import { TNavigation } from "../../Constants/TypesConstants";
 import questionsScreenStyle from "./questionsScreen.style";
 import Dropdown from "../../components/dropDownPicker/dropDownPicker";
+import { AppDispatch } from "../../redux/store";
+import { RootStateTypes } from "../../redux/types/RootStateTypes";
 
 interface TQuestionProps {
   navigation: TNavigation;
@@ -31,8 +33,10 @@ const QuestionsScreen = (props: TQuestionProps) => {
   const [totalScore, setTotalScore] = useState<number>(0);
   const [minScore, setMinScore] = useState<number>(0);
   const [maxScore, setMaxScore] = useState<number>(0);
-  const { assessmentData } = useSelector((state) => state.assessmentData);
-  const dispatch = useDispatch();
+  const { assessmentData } = useSelector(
+    (state: RootStateTypes) => state.assessmentData
+  );
+  const dispatch: AppDispatch = useDispatch();
 
   const allAnswered = questions.every((q) => assessmentData[q.id]);
 

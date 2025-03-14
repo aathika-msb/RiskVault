@@ -10,13 +10,17 @@ import {
   resetAssessmentData,
   resetFinalScore,
 } from "../../redux/actions/assessment";
+import { AppDispatch } from "../../redux/store";
+import { RootStateTypes } from "../../redux/types/RootStateTypes";
 interface TScoreDisplayScreenProps {
   navigation: TNavigation;
 }
 const ScoreDisplayScreen = (props: TScoreDisplayScreenProps): JSX.Element => {
   const { navigation } = props;
-  const { finalScore } = useSelector((state) => state.assessmentData);
-  const dispatch = useDispatch();
+  const { finalScore } = useSelector(
+    (state: RootStateTypes) => state.assessmentData
+  );
+  const dispatch: AppDispatch = useDispatch();
   return (
     <AppContainer style={scoreDisplayScreenStyles.container}>
       <Text style={scoreDisplayScreenStyles.text}>

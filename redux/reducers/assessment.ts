@@ -5,13 +5,24 @@ import {
   setFinalScore,
 } from "../actions/assessment";
 import { getActionType } from "../helperFunctions";
+import { TAction } from "../types/RootStateTypes";
+
+export interface TAssessmentData {
+  assessmentData: {
+    [questionId: string]: {
+      answer: string;
+      value: number;
+    };
+  };
+  finalScore: number;
+}
 
 const initialState = {
   assessmentData: {},
   finalScore: 0,
 };
 
-const assessmentDataReducer = (state = initialState, action) => {
+const assessmentDataReducer = (state:TAssessmentData = initialState, action:TAction) => {
   switch (action.type) {
     case getActionType(setAssessmentData):
       const { questionId, answer, value } = action.payload;
