@@ -1,9 +1,11 @@
-import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
+import { ImageStyle, StyleSheet, TextStyle, ViewStyle } from 'react-native';
 import Colors from '../../theme/color';
 import Sizes from '../../theme/size';
+import { moderateScale } from 'react-native-size-matters';
 
 interface TScoreDisplayScreenStyles {
   container: ViewStyle;
+  mainImage: ImageStyle;
   text: TextStyle;
   linkText: TextStyle;
 }
@@ -14,6 +16,12 @@ const scoreDisplayScreenStyles = StyleSheet.create<TScoreDisplayScreenStyles>({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: Colors.backgroundDark,
+  },
+  mainImage: {
+    height: moderateScale(240),
+    width: moderateScale(240),
+    marginBottom: Sizes.mediumPadding,
+    borderRadius: Sizes.mediumRadius
   },
   text: {
     fontSize: Sizes.largeText,

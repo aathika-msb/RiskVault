@@ -1,5 +1,5 @@
 import React from "react";
-import { Text } from "react-native";
+import { Image, Text } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import scoreDisplayScreenStyles from "./scoreDisplayScreen.style";
 import ScoreIndicator from "../../components/scoreIndicator/scoreIndicator";
@@ -23,6 +23,10 @@ const ScoreDisplayScreen = (props: TScoreDisplayScreenProps): JSX.Element => {
   const dispatch: AppDispatch = useDispatch();
   return (
     <AppContainer style={scoreDisplayScreenStyles.container}>
+      <Image
+        style={scoreDisplayScreenStyles.mainImage}
+        source={require("../../assets/risk_analysis_icon.png")}
+      />
       <Text style={scoreDisplayScreenStyles.text}>
       Your Risk Assessment Result
       </Text>

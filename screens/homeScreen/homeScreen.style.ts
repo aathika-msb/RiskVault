@@ -19,9 +19,10 @@ const homeScreenStyles = StyleSheet.create<IHomeScreenStyles>({
     backgroundColor: Colors.backgroundDark,
   },
   mainImage: {
-    height: moderateScale(140),
-    width: moderateScale(140),
+    height: moderateScale(240),
+    width: moderateScale(240),
     marginBottom: Sizes.mediumPadding,
+    borderRadius: Sizes.mediumRadius
   },
   title: {
     fontFamily: font.fontFamily.bold,

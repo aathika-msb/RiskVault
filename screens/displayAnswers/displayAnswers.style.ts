@@ -1,6 +1,7 @@
 import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 import Colors from '../../theme/color';
 import Sizes from '../../theme/size';
+import { moderateScale } from 'react-native-size-matters';
 
 interface TDisplayAnswersStyle {
     container: ViewStyle;
@@ -20,10 +21,10 @@ const displayAnswersStyle = StyleSheet.create<TDisplayAnswersStyle>({
         fontSize: Sizes.title,
         fontWeight: '600',
         color: Colors.textPrimary,
-        marginBottom: Sizes.smallMargin,
+        marginBottom: Sizes.largeMargin,
     },
     questionContainer: {
-        marginBottom: Sizes.mediumMargin,
+        marginBottom: Sizes.largeMargin,
         alignItems: 'flex-start',
         alignSelf: 'flex-start',
     },
@@ -31,6 +32,7 @@ const displayAnswersStyle = StyleSheet.create<TDisplayAnswersStyle>({
         fontSize: Sizes.mediumText,
         color: Colors.textSecondary,
         fontWeight: '500',
+        marginBottom: moderateScale(4),
     },
     answerText: {
         fontSize: Sizes.regularText,
