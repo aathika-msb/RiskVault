@@ -50,7 +50,7 @@ npm test
 ```
 
 ## Demo
-[Watch the demo video]() 
+[Watch the demo video](https://github.com/aathika-msb/RiskVault/blob/main/assets/riskVault.gif) 
 
 For any questions or contributions, feel free to raise an issue or submit a pull request!
 
