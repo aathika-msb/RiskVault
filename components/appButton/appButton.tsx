@@ -9,6 +9,7 @@ interface TAppButtonProps {
   style?: object;
   textStyle?: object;
   forceDisabled?: boolean;
+  testId?: string;
 }
 const AppButton = ({
   title,
@@ -16,6 +17,7 @@ const AppButton = ({
   style = {},
   textStyle = {},
   forceDisabled = false,
+  testId,
 }: TAppButtonProps): JSX.Element => {
   let buttonTouchableStyle = { ...appButtonStyles.button };
   let buttonTextStyle = { ...appButtonStyles.buttonText, textStyle };
@@ -26,7 +28,7 @@ const AppButton = ({
 
   return (
     <View style={[appButtonStyles.buttonContainer, style]}>
-      <TouchableOpacity style={buttonTouchableStyle} onPress={onPress} disabled={forceDisabled}>
+      <TouchableOpacity style={buttonTouchableStyle} onPress={onPress} disabled={forceDisabled} testID={testId ? testId : "app-button"}>
         <Text style={buttonTextStyle}>{title}</Text>
       </TouchableOpacity>
     </View>

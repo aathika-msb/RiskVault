@@ -120,6 +120,7 @@ const QuestionsScreen = (props: TQuestionProps) => {
         style={questionsScreenStyle.buttonContainerStyle}
         title="Submit"
         onPress={() => onSubmit()}
+        testId="submit-button"
       />
     </AppContainer>
   );
