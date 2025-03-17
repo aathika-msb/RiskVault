@@ -12,7 +12,7 @@ interface TAppButtonProps {
 }
 const AppButton = ({
   title,
-  onPress = () => {},
+  onPress = () => {console.log(`Button ${title} pressed`)},
   style = {},
   textStyle = {},
   forceDisabled = false,

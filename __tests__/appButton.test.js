@@ -5,14 +5,28 @@ import Colors from "../theme/color";
 
 describe("AppButton Component", () => {
   it("renders correctly with given title", () => {
-    const { getByText } = render(<AppButton title="Click Me" onPress={() => {}} />);
+    const { getByText } = render(
+      <AppButton title="Click Me" onPress={() => {}} />
+    );
     expect(getByText("Click Me")).toBeTruthy();
+  });
+
+  it("calls empty default function when onPress prop is not passed", () => {
+    const SpyOnConsole = jest.spyOn(console, "log");
+    const { getByText } = render(<AppButton title="Click Me" />);
+
+    const buttonText = getByText("Click Me");
+    fireEvent.press(buttonText);
+
+    expect(SpyOnConsole).toHaveBeenCalledWith("Button Click Me pressed");
   });
 
   it("calls onPress function when pressed", () => {
     const mockOnPress = jest.fn();
-    const { getByText } = render(<AppButton title="Press Me" onPress={mockOnPress} />);
-    
+    const { getByText } = render(
+      <AppButton title="Press Me" onPress={mockOnPress} />
+    );
+
     fireEvent.press(getByText("Press Me"));
     expect(mockOnPress).toHaveBeenCalledTimes(1);
   });
@@ -31,7 +45,7 @@ describe("AppButton Component", () => {
     const { getByText } = render(
       <AppButton title="Disabled" onPress={() => {}} forceDisabled={true} />
     );
-    
+
     const buttonText = getByText("Disabled");
     expect(buttonText.props.style.color).toBe(Colors.backgroundLight);
   });

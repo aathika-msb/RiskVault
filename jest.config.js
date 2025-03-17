@@ -6,5 +6,6 @@ module.exports = {
       "node_modules/(?!(jest-)?react-native|@react-native|expo(nent)?|@expo(nent)?/.*)",
     ],
     setupFiles: ["<rootDir>/jest.setup.js"],
+    testMatch: ["**/*.test.js"]
   };
   

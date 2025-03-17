@@ -21,7 +21,7 @@ const Dropdown = ({
   const [value, setValue] = useState<number | null>(null);
 
   return (
-    <View style={{ ...styles.dropDownMainContainer, zIndex: open ? 2 : 1 }}>
+    <View style={{ ...styles.dropDownMainContainer, zIndex: open ? 2 : 1 }} testID={`dropdown-${questionId}`}>
       <DropDownPicker
         open={open}
         value={value}
@@ -37,6 +37,7 @@ const Dropdown = ({
         }}
         zIndex={3000 - index * 1000} // Ensure dropdowns are properly stacked
         zIndexInverse={1000 + index * 1000}
+        testID={`dropdown-picker-${questionId}`}
       />
     </View>
   );
